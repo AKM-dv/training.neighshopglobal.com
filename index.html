@@ -700,24 +700,94 @@
             text-align: center;
         }
 
-        .price-tag {
-            font-family: var(--font-display);
-            font-size: clamp(80px, 14vw, 140px);
-            background: var(--white);
-            color: var(--black);
-            display: inline-block;
-            padding: 16px 60px;
-            border-radius: 8px;
-            margin: 40px 0 24px;
-            letter-spacing: 2px;
+        .pricing-card {
+            background: linear-gradient(145deg, #161616, #0a0a0a);
+            border: 1px solid var(--gray-border);
+            border-radius: 12px;
+            padding: 48px;
+            max-width: 440px;
+            margin: 40px auto 0;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 40px rgba(168, 240, 96, 0.05);
+            text-align: left;
+            transition: transform 0.3s, border-color 0.3s;
         }
 
-        .price-note {
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--green-dark);
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 4px;
+            background: var(--green);
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        .pricing-header {
+            text-align: center;
+            border-bottom: 1px solid var(--gray-border);
+            padding-bottom: 24px;
+            margin-bottom: 32px;
+        }
+
+        .pricing-header h3 {
+            font-size: 1.05rem;
+            color: var(--green);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .price-tag-new {
+            font-family: var(--font-display);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .price-tag-new .currency {
+            font-size: 2.5rem;
+            margin-top: -24px;
+            margin-right: 8px;
+            color: var(--gray-text);
+        }
+
+        .price-tag-new .amount {
+            font-size: clamp(60px, 14vw, 90px);
+        }
+
+        .price-note-new {
             font-size: 0.85rem;
             color: var(--gray-text);
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            margin-top: 12px;
+        }
+
+        .pricing-features {
+            list-style: none;
             margin-bottom: 40px;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+            color: var(--white);
+        }
+
+        .pricing-features .check {
+            color: var(--green);
+            margin-right: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+            font-size: 1.1rem;
         }
 
         /* ── FOOTER ── */
@@ -868,8 +938,23 @@
                 grid-template-columns: 1fr;
             }
 
+            .hero-number {
+                display: block;
+                margin-bottom: 12px;
+            }
+
+            .hero-title-rest {
+                display: block;
+                margin-left: 0;
+            }
+
             .elig-item {
                 border-right: none;
+                grid-column: span 1 !important;
+            }
+
+            .pricing-card {
+                padding: 32px 24px;
             }
 
             .placement-banner {
@@ -1208,17 +1293,31 @@
     <section class="pricing-section" id="pricing">
         <div class="section-label">Pricing & Enrollment</div>
         <h2 class="section-title">LIMITED SEATS.<br>FIRST-COME BASIS.</h2>
-        <p style="color: var(--gray-text); font-size: 0.9rem; margin-top: 8px;">Batch size of maximum 10 — once it's
-            full, it's full.</p>
-        <div class="price-tag">₹ 7499/-</div>
-        <p class="price-note">One-time fee · Includes all tools, mentorship & certificate</p>
-        <a href="https://forms.gle/qJKwviBjb3zS3xfw9" target="_blank" class="btn-primary"
-            style="font-size: 1.05rem; padding: 18px 48px;">Book Your Seat
-            Today</a>
-        <p style="margin-top: 24px; color: var(--gray-text); font-size: 0.9rem;">
-            Connect at <a href="tel:+917688877547"
-                style="color: var(--white); text-decoration: none; font-weight: 600;">+91 7688877547</a>
-        </p>
+        <p style="color: var(--gray-text); font-size: 0.9rem; margin-top: 8px;">Batch size of maximum 10 — once it's full, it's full.</p>
+
+        <div class="pricing-card">
+            <div class="pricing-header">
+                <h3>Internship Program</h3>
+                <div class="price-tag-new">
+                    <span class="currency">₹</span><span class="amount">7,499</span>
+                </div>
+                <p class="price-note-new">One-time fee for 45 Days</p>
+            </div>
+            
+            <ul class="pricing-features">
+                <li><span class="check">✓</span> Real Client Projects</li>
+                <li><span class="check">✓</span> Mentorship from Developers</li>
+                <li><span class="check">✓</span> Agency Workflow Training</li>
+                <li><span class="check">✓</span> Certificate of Completion</li>
+                <li><span class="check">✓</span> Placement Opportunity</li>
+            </ul>
+            
+            <a href="https://forms.gle/qJKwviBjb3zS3xfw9" target="_blank" class="btn-primary" style="width: 100%; display: block; text-align: center; padding: 18px 0; font-size: 1.05rem;">Book Your Seat Today</a>
+            
+            <p style="margin-top: 16px; text-align: center; color: var(--gray-text); font-size: 0.85rem;">
+                Connect at <a href="tel:+917688877547" style="color: var(--white); text-decoration: none; font-weight: 600;">+91 7688877547</a>
+            </p>
+        </div>
     </section>
 
     <!-- FOOTER -->
